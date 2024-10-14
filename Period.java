@@ -5,11 +5,22 @@
 package cm;
 
 public class Period {
-    public Period() {
+    int startHour;
+    int endHour;
 
+    public Period(int start, int end) throws IllegalArgumentException {
+        if (start < 0 || start >= 24 || end <= 0 || end > 24) {
+            throw new IllegalArgumentException();
+        }
+        startHour = start;
+        endHour = end;
     }
 
-    protected int duration() {
-        return 1;
+    public boolean overlaps(Period period) {
+        return (period.endHour > startHour || period.startHour < endHour);
+    }
+
+    public int duration() {
+        return endHour - startHour;
     }
 }

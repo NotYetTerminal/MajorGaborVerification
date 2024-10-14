@@ -9,11 +9,31 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MajorGaborTestTask1 {
-    private final cm.Rate rate = new cm.Rate();
-    private final cm.Period period = new cm.Period();
+    private cm.Period period;
+    private cm.Rate rate;
 
     @Test
-    void duration() {
-        assertEquals(1, period.duration());
+    void periodConstructor() {
+
+    }
+
+    @Test
+    void periodOverlaps() {
+
+    }
+
+    @Test
+    void periodDuration() {
+
+    }
+
+    @Test
+    void rateConstructor() {
+
+    }
+
+    @Test
+    void rateCalculate() {
+
     }
 }
