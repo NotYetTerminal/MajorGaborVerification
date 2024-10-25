@@ -25,6 +25,8 @@ public class MajorGaborPeriodTests {
 
     @TestFactory
     Stream<DynamicTest> testConstructorValidInput() {
+        AtomicInteger index = new AtomicInteger(startingTestNumbers[0]);
+
         // Testing data format is: { startHour, endHour }
         int[][] validInputData = new int[][]{
                 {3, 18},
@@ -36,7 +38,6 @@ public class MajorGaborPeriodTests {
                 {7, 9}
         };
 
-        AtomicInteger index = new AtomicInteger(startingTestNumbers[0]);
         return Arrays.stream(validInputData).map(data -> {
             int start = data[0];
             int end = data[1];
@@ -54,6 +55,8 @@ public class MajorGaborPeriodTests {
 
     @TestFactory
     Stream<DynamicTest> testConstructorInvalidInput() {
+        AtomicInteger index = new AtomicInteger(startingTestNumbers[1]);
+
         // Testing data format is: { startHour, endHour }
         int[][] invalidInputData = new int[][]{
                 {-1, 8},
@@ -66,7 +69,6 @@ public class MajorGaborPeriodTests {
                 {12, 12}
         };
 
-        AtomicInteger index = new AtomicInteger(startingTestNumbers[1]);
         return Arrays.stream(invalidInputData).map(data -> {
             int start = data[0];
             int end = data[1];
@@ -82,9 +84,10 @@ public class MajorGaborPeriodTests {
 
     @TestFactory
     Stream<DynamicTest> testOverlapsInputs() {
+        AtomicInteger index = new AtomicInteger(startingTestNumbers[2]);
+
         Period period = new Period(5, 7);
 
-        AtomicInteger index = new AtomicInteger(startingTestNumbers[2]);
         return Stream.of(
                 DynamicTest.dynamicTest(
                         "Test Number: " + index.getAndIncrement() + ", Valid Input, Expected Result: TRUE",
@@ -102,6 +105,8 @@ public class MajorGaborPeriodTests {
 
     @TestFactory
     Stream<DynamicTest> testOverlapsValidOutput() {
+        AtomicInteger index = new AtomicInteger(startingTestNumbers[3]);
+
         Period period_1 = new Period(10, 12);
 
         // Testing data format is ( Period, result as a boolean )
@@ -114,7 +119,6 @@ public class MajorGaborPeriodTests {
                 new Period(5, 9), false
         );
 
-        AtomicInteger index = new AtomicInteger(startingTestNumbers[3]);
         return validOutputData.entrySet().stream().map(data -> {
             Period period_2 = data.getKey();
             boolean result = data.getValue();
@@ -130,6 +134,8 @@ public class MajorGaborPeriodTests {
 
     @TestFactory
     Stream<DynamicTest> testDurationValidOutput() {
+        AtomicInteger index = new AtomicInteger(startingTestNumbers[4]);
+
         // Testing data format is: ( Period, expected result of period.duration() )
         Map<Period, Integer> testingData = Map.of(
                 new Period(0, 10), 10,
@@ -138,7 +144,6 @@ public class MajorGaborPeriodTests {
                 new Period(14, 18), 4
         );
 
-        AtomicInteger index = new AtomicInteger(startingTestNumbers[4]);
         return testingData.entrySet().stream().map(data -> {
             Period period = data.getKey();
             int result = data.getValue();
