@@ -4,8 +4,6 @@
 
 package cm;
 
-import cm.Period;
-
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
@@ -16,7 +14,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MajorGaborPeriodTests {
+public class MajorGaborTestTaskPeriod1 {
 
     // Used for printing out test number of each test
     int[] startingTestNumbers = new int[]{
