@@ -278,7 +278,7 @@ public class MajorGaborTestTaskRate2 {
     @Test
     void calculatePeriodOnlyReducedRates() {
         Rate rate = new Rate(CarParkKind.STAFF, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
-        assertEquals(new BigDecimal(39), rate.calculate(new Period(5, 16)));
+        assertEquals(new BigDecimal(9), rate.calculate(new Period(5, 10)));
     }
 
     @Test
