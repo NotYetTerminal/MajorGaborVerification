@@ -201,6 +201,7 @@ public class MajorGaborTestTaskRate2 {
         assertThrows(IllegalArgumentException.class, () -> new Rate(CarParkKind.STAFF, new ArrayList<>() {{
             add(new Period(2, 5));
             add(new Period(3, 7));
+            add(new Period(9, 10));
         }}, baseNormalPeriods, baseNormalRate, baseReducedRate));
     }
 
@@ -216,6 +217,7 @@ public class MajorGaborTestTaskRate2 {
     void constructorReducedPeriodsAndNormalPeriodsOverlapping() {
         assertThrows(IllegalArgumentException.class, () -> new Rate(CarParkKind.STAFF, new ArrayList<>() {{
             add(new Period(4, 7));
+            add(new Period(11, 12));
         }}, new ArrayList<>() {{
             add(new Period(5, 8));
         }}, baseNormalRate, baseReducedRate));
@@ -291,5 +293,11 @@ public class MajorGaborTestTaskRate2 {
     void calculatePeriodBothRates() {
         Rate rate = new Rate(CarParkKind.STAFF, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
         assertEquals(new BigDecimal(9), rate.calculate(new Period(9, 11)));
+    }
+
+    @Test
+    void calculateKindIsVisitor() {
+        Rate rate = new Rate(CarParkKind.VISITOR, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
+        assertEquals(new BigDecimal(0), rate.calculate(new Period(9, 11)));
     }
 }

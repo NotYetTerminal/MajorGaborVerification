@@ -62,7 +62,7 @@ public class MajorGaborTestTaskPeriod2 {
 
     @Test
     void constructorStartHourGreaterThanTwentyFour() {
-        assertThrows(IllegalArgumentException.class, () -> new Period(27, 8));
+        assertThrows(IllegalArgumentException.class, () -> new Period(27, 30));
     }
 
     @Test
