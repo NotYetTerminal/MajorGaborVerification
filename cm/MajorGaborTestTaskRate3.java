@@ -295,21 +295,22 @@ public class MajorGaborTestTaskRate3 {
         assertEquals(new BigDecimal(9), rate.calculate(new Period(9, 11)));
     }
 
+    // Tests when CarParkKind is VISITOR
     @Test
     void calculateKindIsVisitorAndFeeLessThanTen() {
         Rate rate = new Rate(CarParkKind.VISITOR, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
-        assertEquals(new BigDecimal(0), rate.calculate(new Period(10, 12)));
+        assertEquals(new BigDecimal("0.0"), rate.calculate(new Period(7, 9)));
     }
 
     @Test
     void calculateKindIsVisitorAndFeeEqualToTen() {
         Rate rate = new Rate(CarParkKind.VISITOR, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, new BigDecimal(2));
-        assertEquals(new BigDecimal(0), rate.calculate(new Period(9, 12)));
+        assertEquals(new BigDecimal("0.0"), rate.calculate(new Period(8, 11)));
     }
 
     @Test
     void calculateKindIsVisitorAndFeeGreaterThanTen() {
         Rate rate = new Rate(CarParkKind.VISITOR, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
-        assertEquals(new BigDecimal(0), rate.calculate(new Period(9, 12)));
+        assertEquals(new BigDecimal("4.0"), rate.calculate(new Period(12, 15)));
     }
 }
