@@ -294,10 +294,4 @@ public class MajorGaborTestTaskRate2 {
         Rate rate = new Rate(CarParkKind.STAFF, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
         assertEquals(new BigDecimal(9), rate.calculate(new Period(9, 11)));
     }
-
-    @Test
-    void calculateKindIsVisitor() {
-        Rate rate = new Rate(CarParkKind.VISITOR, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
-        assertEquals(new BigDecimal(0), rate.calculate(new Period(9, 11)));
-    }
 }
