@@ -108,7 +108,7 @@ public class Rate {
                 totalFee = totalFee.multiply(new BigDecimal("0.5"));
             }
             case MANAGEMENT -> {
-                return totalFee;
+                totalFee = totalFee.max(new BigDecimal(4));
             }
             case STUDENT -> {
                 return totalFee;
