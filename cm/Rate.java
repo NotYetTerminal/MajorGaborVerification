@@ -111,7 +111,9 @@ public class Rate {
                 totalFee = totalFee.max(new BigDecimal(4));
             }
             case STUDENT -> {
-                return totalFee;
+                if (totalFee.compareTo(new BigDecimal("5.5")) > 0) {
+                    totalFee = totalFee.multiply(new BigDecimal("0.75"));
+                }
             }
             case STAFF -> {
                 return totalFee;
