@@ -316,19 +316,19 @@ public class MajorGaborTestTaskRate3 {
 
     // Tests when CarParkKind is MANAGEMENT
     @Test
-    void calculateKindIsManagementAndFeeLessThanTen() {
+    void calculateKindIsManagementAndFeeLessThanFour() {
         Rate rate = new Rate(CarParkKind.MANAGEMENT, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
         assertEquals(new BigDecimal(4), rate.calculate(new Period(8, 9)));
     }
 
     @Test
-    void calculateKindIsManagementAndFeeEqualToTen() {
+    void calculateKindIsManagementAndFeeEqualToFour() {
         Rate rate = new Rate(CarParkKind.MANAGEMENT, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, new BigDecimal(2));
         assertEquals(new BigDecimal(4), rate.calculate(new Period(8, 10)));
     }
 
     @Test
-    void calculateKindIsManagementAndFeeGreaterThanTen() {
+    void calculateKindIsManagementAndFeeGreaterThanFour() {
         Rate rate = new Rate(CarParkKind.MANAGEMENT, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
         assertEquals(new BigDecimal(6), rate.calculate(new Period(10, 11)));
     }
