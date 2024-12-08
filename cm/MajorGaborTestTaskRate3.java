@@ -273,7 +273,7 @@ public class MajorGaborTestTaskRate3 {
 
     @Test
     void calculatePeriodForAllRates() {
-        Rate rate = new Rate(CarParkKind.STAFF, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
+        Rate rate = new Rate(CarParkKind.MANAGEMENT, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
         assertEquals(new BigDecimal(42), rate.calculate(new Period(0, 24)));
     }
 
@@ -285,7 +285,7 @@ public class MajorGaborTestTaskRate3 {
 
     @Test
     void calculatePeriodOnlyNormalRates() {
-        Rate rate = new Rate(CarParkKind.STAFF, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
+        Rate rate = new Rate(CarParkKind.MANAGEMENT, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
         assertEquals(new BigDecimal(24), rate.calculate(new Period(11, 16)));
     }
 
