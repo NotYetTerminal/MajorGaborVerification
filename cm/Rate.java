@@ -116,7 +116,7 @@ public class Rate {
                 }
             }
             case STAFF -> {
-                return totalFee;
+                totalFee = totalFee.min(new BigDecimal(16));
             }
         }
         return totalFee;
