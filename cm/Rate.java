@@ -99,8 +99,25 @@ public class Rate {
         }
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
-        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
+        BigDecimal totalFee = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
                 this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
+        switch (kind) {
+            case VISITOR -> {
+                totalFee = totalFee.subtract(new BigDecimal(10));
+                totalFee = totalFee.max(new BigDecimal(0));
+                totalFee = totalFee.multiply(new BigDecimal("0.5"));
+            }
+            case MANAGEMENT -> {
+                return totalFee;
+            }
+            case STUDENT -> {
+                return totalFee;
+            }
+            case STAFF -> {
+                return totalFee;
+            }
+        }
+        return totalFee;
     }
 
 }
