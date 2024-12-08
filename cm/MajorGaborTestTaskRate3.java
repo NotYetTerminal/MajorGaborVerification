@@ -351,4 +351,23 @@ public class MajorGaborTestTaskRate3 {
         Rate rate = new Rate(CarParkKind.STUDENT, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
         assertEquals(new BigDecimal("9.00"), rate.calculate(new Period(10, 12)));
     }
+
+    // Tests when CarParkKind is STAFF
+    @Test
+    void calculateKindIsStaffAndFeeLessThanSixteen() {
+        Rate rate = new Rate(CarParkKind.STAFF, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
+        assertEquals(new BigDecimal(6), rate.calculate(new Period(11, 12)));
+    }
+
+    @Test
+    void calculateKindIsStaffAndFeeEqualToSixteen() {
+        Rate rate = new Rate(CarParkKind.STAFF, calculateBaseReducedPeriods, calculateBaseNormalPeriods, new BigDecimal(5), new BigDecimal(1));
+        assertEquals(new BigDecimal(16), rate.calculate(new Period(9, 13)));
+    }
+
+    @Test
+    void calculateKindIsStaffAndFeeGreaterThanSixteen() {
+        Rate rate = new Rate(CarParkKind.STAFF, calculateBaseReducedPeriods, calculateBaseNormalPeriods, baseNormalRate, baseReducedRate);
+        assertEquals(new BigDecimal(16), rate.calculate(new Period(11, 14)));
+    }
 }
